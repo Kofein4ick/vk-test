@@ -39,8 +39,8 @@ const dateHandler=(e)=>{setDate(e.target.value)};
 const timeStartHandler=(e)=>{setStart(e.target.value)};
 const timeEndHandler=(e)=>{setEnd(e.target.value)};
 const commentHandler=(e)=>{setComm(e.target.value)};
-const sendButtonHandler=()=>{
 
+const sendButtonHandler=()=>{
 if(date===''){toast.error('Выберите дату');return;};
 if(timeStart===''){toast.error('Выберите время начала аренды');return;};
 if(timeEnd===''){toast.error('Выберите время окончания аренды');return;};
@@ -61,6 +61,7 @@ let json=JSON.stringify({
   console.log(json)
   toast.success('Отправлено!')
 };
+
 const clearButtonHandler=()=>{
   document.getElementById("dateControl").value = "";
   setDate('');
@@ -93,7 +94,6 @@ const clearButtonHandler=()=>{
           <span className='d-flex flex-row justify-content-between mt-2'>
             <Form.Label>Выбор даты</Form.Label>
             <Form.Control id='dateControl' onChange={dateHandler} style={{width:'40%'}} size='sm' type='date'/> 
-
           </span>
           <span className='d-flex flex-row justify-content-between mt-2'>
             <Form.Label>Время начала</Form.Label>
