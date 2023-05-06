@@ -2,8 +2,8 @@ import {useState } from 'react';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer,toast } from "react-toastify";
-
 import {Form,Container,Card, Button} from 'react-bootstrap';
+
 //Заполнение селектора выбора этажа
 function FloorSelect({handler}){
   let temp=[];
@@ -50,8 +50,7 @@ let strToday=''+year+'-'+mon+'-'+day;
 if(date===''){toast.error('Выберите дату');return;};
 if(timeStart===''){toast.error('Выберите время начала аренды');return;};
 if(timeEnd===''){toast.error('Выберите время окончания аренды');return;};
-if(date < strToday)
-  {toast.error('Неправильная дата');return;};
+if(date < strToday){toast.error('Неправильная дата');return;};
 if(timeEnd <= timeStart){toast.error('Время начала аренды больше/равно времени окончания');return;};
 
 let hours= (timeEnd[0]-timeStart[0])*10+(timeEnd[1]-timeStart[1]);
