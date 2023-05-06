@@ -41,13 +41,23 @@ const timeEndHandler=(e)=>{setEnd(e.target.value)};
 const commentHandler=(e)=>{setComm(e.target.value)};
 
 const sendButtonHandler=()=>{
+let today=new Date();
+let day = String(today.getDate()).padStart(2, '0');
+let mon = String(today.getMonth() + 1).padStart(2, '0');
+let year = today.getFullYear();
+let strToday=''+year+'-'+mon+'-'+day;
+
 if(date===''){toast.error('Выберите дату');return;};
 if(timeStart===''){toast.error('Выберите время начала аренды');return;};
 if(timeEnd===''){toast.error('Выберите время окончания аренды');return;};
-if(timeEnd <= timeStart){toast.error('Время начала аренды больше/равно времени окончания');return;}
+if(date < strToday)
+  {toast.error('Неправильная дата');return;};
+if(timeEnd <= timeStart){toast.error('Время начала аренды больше/равно времени окончания');return;};
+
 let hours= (timeEnd[0]-timeStart[0])*10+(timeEnd[1]-timeStart[1]);
 let minutes= (timeEnd[3]-timeStart[3])*10+(timeEnd[4]-timeStart[4]);
 let duration=hours*60+minutes;
+
 let json=JSON.stringify({
     tower:tower,
     floor:floor,
